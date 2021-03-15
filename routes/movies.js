@@ -35,7 +35,6 @@ movies.post(
         }
         return value;
       }),
-      owner: Joi.string().required().hex().length(24),
       movieId: Joi.string().required().min(1).max(30),
       nameRU: Joi.string().required().min(1).max(30),
       nameEN: Joi.string().required().min(1).max(30),
