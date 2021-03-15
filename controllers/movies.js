@@ -19,7 +19,7 @@ export const postMovie = (req, res, next) => {
     return;
   }
 
-  Movie.create({ ...movieData })
+  Movie.create({ ...movieData, owner: owner})
     .then((movie) => {
       if (!movie) {
         throw new BadRequestError('Переданы некорректные данные в метод создания фильма или пользователя');
