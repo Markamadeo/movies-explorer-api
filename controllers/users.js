@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
@@ -79,7 +80,7 @@ export const login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV !== 'production' ? JWT_DEV_SECRET : JWT_SECRET, { expiresIn: '7d' });
-      if(NODE_ENV === 'production') {
+      if (NODE_ENV === 'production') {
         res.cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
@@ -96,7 +97,7 @@ export const login = (req, res, next) => {
 
 export const logout = (req, res) => {
   const { NODE_ENV } = process.env;
-  if(NODE_ENV === 'production') {
+  if (NODE_ENV === 'production') {
     res.cookie('jwt', 'deleted', {
       maxAge: 100,
       httpOnly: true,

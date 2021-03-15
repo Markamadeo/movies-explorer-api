@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import Movie from '../models/movie.js';
 import BadRequestError from '../utils/errors/bad-request-error.js';
 import ForbiddenError from '../utils/errors/forbidden-error.js';
@@ -5,7 +6,7 @@ import NotFoundError from '../utils/errors/not-found-error.js';
 import { checkRequestToNull } from '../utils/utils.js';
 
 export const getMovies = (req, res, next) => {
-  Movie.find({owner: req.user._id})
+  Movie.find({ owner: req.user._id })
     .then((movies) => res.send({ data: movies }))
     .catch(next);
 };
@@ -19,7 +20,7 @@ export const postMovie = (req, res, next) => {
     return;
   }
 
-  Movie.create({ ...movieData, owner: owner})
+  Movie.create({ ...movieData, owner: req.user._id })
     .then((movie) => {
       if (!movie) {
         throw new BadRequestError('Переданы некорректные данные в метод создания фильма или пользователя');

@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -71,7 +72,6 @@ app.use(
 app.use(errorLogger);
 
 app.use(errors());
-// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
 
@@ -82,6 +82,7 @@ app.use((err, req, res, next) => {
         ? `На сервере произошла ошибка: ${message}`
         : message,
     });
+  return next();
 });
 
 app.listen(PORT, () => { // eslint-disable-next-line no-console
