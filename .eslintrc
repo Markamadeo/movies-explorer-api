@@ -1,6 +1,7 @@
 {
   "rules": {
-    "no-underscore-dangle": ["error", { "allow": ["_id", "__dirname"] }]
+    "no-underscore-dangle": ["error", { "allow": ["_id", "__dirname"] }],
+    "import/extensions": ["always"]
   },
   "extends": "airbnb-base"
 }
