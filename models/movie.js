@@ -50,6 +50,9 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  liked: {
+    type: Boolean,
+  },
 });
 
 const Movie = mongoose.model('movie', movieSchema);

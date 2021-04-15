@@ -14,7 +14,7 @@ movies.post(
   celebrate({
     body: Joi.object().keys({
       country: Joi.string().required().min(2).max(30),
-      director: Joi.string().required().min(2).max(30),
+      director: Joi.string().required().min(2).max(300),
       duration: Joi.number().required(),
       year: Joi.string().required().min(4),
       description: Joi.string().required().min(2).max(2000),
@@ -37,8 +37,9 @@ movies.post(
         return value;
       }),
       movieId: Joi.string().required().min(1).max(30),
-      nameRU: Joi.string().required().min(1).max(30),
-      nameEN: Joi.string().required().min(1).max(30),
+      nameRU: Joi.string().required().min(1).max(70),
+      nameEN: Joi.string().required().min(1).max(70),
+      liked: Joi.bool(),
     }),
   }),
   postMovie,
